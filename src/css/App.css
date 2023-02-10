@@ -58,19 +58,17 @@
     vertical-align: middle;
 }
 .card-header{
-    background-color: #242d2a !important;
+    background-color: #718880 !important;
     color: #fff;
 }
-.card-body.toolbox-list{
 
-}
 .card-body.toolbox-list .list-group{
     display: block;
     padding: 10px;
 }
 .card-body.toolbox-list .list-group .list-group-item{
     display: inline-block;
-    width: 48%;
+    width: 100%;
     margin: 4px 1%;
     padding: 10px;
     border-left: 3px solid #252d2a;
@@ -90,5 +88,10 @@
     border-bottom: 1px solid #fff !important;
 }
 .modal-body.mobile{
+    background-color: #252d2a;
     /* background: url(../assets/img/mobile.png) no-repeat; */
 }
+/* #root{
+    background-color: #252d2a;
+    height: 100%;
+} */

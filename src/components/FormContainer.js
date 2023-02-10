@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import SingleField from './Types/SingleField';
-import SelectField from "./Types/SelectField";
-import CheckBoxes from './Types/CheckBoxes';
 import Preview from './Preview';
-import RadioButtons from "./Types/RadioButtons";
-import Paragraph from "./Types/Paragraph";
-import DurationPicker from "./Types/DurationPicker";
+
 
 class FormContainer extends Component {
     constructor(props){
@@ -82,8 +78,7 @@ class FormContainer extends Component {
                     <div className="card-header">
                         <span className="pull-left">Form Items</span>
                         <div className="actions pull-right">
-                            <button data-toggle="modal" data-target="#previewModal" className="btn btn-sm btn-dark">Mobile Preview</button>
-                            { ' ' }
+                            
                             { 
                                 this.props.loader ? 
                                 <button disabled hidden={!this.props.onSave} className="btn btn-sm btn-success"><i className="fa fa-spin fa-spinner"></i></button>
@@ -97,7 +92,7 @@ class FormContainer extends Component {
                             <p className="alert alert-danger">
                                 <strong>Please resolve following errors.</strong>
                                 <ul>
-                                    <li>Name field cannot be empty</li>
+                                    <li>name field cannot be empty</li>
                                     <li>Remove whitespaces from name field</li>
                                     <li>Duplicate name field found</li>
                                 </ul>
@@ -208,7 +203,7 @@ class FormContainer extends Component {
             if (Component) {
                 let props = {
                     fields : field,
-                    index : index,
+                    index : index,  
                     key: index,
                     changeState : (e, index) => this.changeChildState(e, index),
                     removeField : () => this.remove(index)
@@ -217,55 +212,13 @@ class FormContainer extends Component {
                 return ClonedComponent;
             }
         }
-        if(field.toolType === 'SELECT_FIELD'){
-            return (
-                    <SelectField changeState={(e, index) => this.changeChildState(e, index)}
-                                 field={field}
-                                 index={index}
-                                 key={index}
-                                 removeField={() => this.remove(index)} />
-            )
-        }else if(field.toolType === 'SINGLE_FIELD'){
+        if(field.toolType === 'SINGLE_FIELD'){
             return (
                     <SingleField changeState={(e, index) => this.changeChildState(e, index)}
                                  field={field}
                                  index={index}
                                  key={index}
                                  removeField={() => this.remove(index)} />
-            )
-        }else if(field.toolType === 'CHECK_BOXES'){
-            return (
-                    <CheckBoxes changeState={(e, index) => this.changeChildState(e, index)}
-                                field={field}
-                                index={index}
-                                key={index}
-                                removeField={() => this.remove(index)} />
-            )
-        }else if(field.toolType === 'RADIO_BUTTONS'){
-            return (
-                <RadioButtons
-                            changeState={(e, index) => this.changeChildState(e, index)}
-                            field={field}
-                            key={index}
-                            index={index}
-                            removeField={() => this.remove(index)} />
-            )
-        }else if(field.toolType === 'PARAGRAPH'){
-            return (
-                <Paragraph changeState={(e, index) => this.changeChildState(e, index)}
-                           field={field}
-                           key={index}
-                           index={index}
-                           removeField={() => this.remove(index)} />
-            )
-        }else if(field.toolType === 'DURATION_PICKER'){
-            return (
-                <DurationPicker 
-                             changeState={(e, index) => this.changeChildState(e, index)}
-                             field={field}
-                             index={index}
-                             key={index}
-                             removeField={() => this.remove(index)} />
             )
         }
     }
@@ -337,7 +290,7 @@ class FormContainer extends Component {
             }
         }
 
-        let tools = ["SINGLE_FIELD", "SELECT_FIELD", "CHECK_BOXES", "RADIO_BUTTONS", "PARAGRAPH", "DURATION_PICKER"];
+        let tools = ["SINGLE_FIELD"];
         if(tools.indexOf(data) === -1){
             this.setState({
                 dragActive : false,
@@ -347,97 +300,18 @@ class FormContainer extends Component {
         var meta = {};
         if(data === 'SINGLE_FIELD'){
             meta = {
-                title : 'Title',
+                // title : 'Title',
                 type : 'Text',
                 toolType : 'SINGLE_FIELD',
-                defaultValue : '',
-                placeholder : '',
-                description : '',
-                validation : {
-                    isReadOnly: false,
-                    isRequired: false,
-                    min : 6,
-                    max : 6
-                }
-            }
-        }else if(data === 'DURATION_PICKER'){
-            meta = {
-                titleTo : 'Title',
-                titleFrom : 'Title',
-                title : 'Title',
-                type : 'DURATION',
-                toolType : 'DURATION_PICKER',
-                defaultValue : '',
-                placeholder : '',
-                description : '',
-                validation : {
-                    isReadOnly: false,
-                    isRequired: false,
-                    min : 6,
-                    max : 6
-                }
-            }
-        }else if(data === 'SELECT_FIELD'){
-            meta = {
-                title : 'Title',
-                type : 'SELECT',
-                toolType : 'SELECT_FIELD',
-                multiple: false,
-                defaultValue : '',
-                placeholder : '',
-                description : '',
-                validation : {
-                    isReadOnly: false,
-                    isRequired: false,
-                    min : 6,
-                    max : 6
-                },
-                options : []
-            }
-        }else if(data === 'CHECK_BOXES'){
-            meta = {
-                title : 'Title',
-                toolType : 'CHECK_BOXES',
-                inline: false,
-                defaultValue : '',
-                placeholder : '',
-                description : '',
-                validation : {
-                    isReadOnly: false,
-                    isRequired: false,
-                    min : 6,
-                    max : 6
-                },
-                checkBoxes : []
-            }
-        }
-        else if(data === 'RADIO_BUTTONS'){
-            meta = {
-                title : 'Title',
-                toolType : 'RADIO_BUTTONS',
-                multiple : false,
-                inline: false,
-                defaultValue : '',
-                placeholder : '',
-                description : '',
-                validation : {
-                    isReadOnly: false,
-                    isRequired: false,
-                    min : 6,
-                    max : 6
-                },
-                radios : []
-            }
-        }else if(data === 'PARAGRAPH'){
-            meta = {
-                title : 'Title',
-                toolType : 'PARAGRAPH',
-                content : '',
-                textColor : '',
-                backgroundColor : '',
-                color : '',
-                fontSize : '',
-                align : ''
+                // defaultValue : '',
+                // placeholder : '',
+                // description : '',
+                // validation : {
+                //     isReadOnly: false,
+                //     isRequired: false,
+                //     min : 6,
+                //     max : 6
+                // }
             }
         }
         let fields = this.state.fields;

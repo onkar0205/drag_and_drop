@@ -49,9 +49,8 @@ const myCustoms = [
             name : 'CUSTOM_COM'
         },
         states : {
-            toolType: 'CUSTOM_COM',
-            num1 : 1,
-            num2 : 2
+            // toolType: 'CUSTOM_COM'
+            
         }
     }
 ]
@@ -60,9 +59,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
+        <div className="container" >
             <div className="row">
-                <div className="col-md-7">
+                <div className="col-md-4">
+                    <ToolBox custom={ myCustoms } />
+                </div>
+                <div className="col-md-8">
                     <FormContainer
                         loader={false}
                         debug={false}
@@ -71,9 +73,7 @@ class App extends Component {
                         onSave={this.myForm}
                         custom={ myCustoms } />
                 </div>
-                <div className="col-md-5">
-                    <ToolBox custom={ myCustoms } />
-                </div>
+                
             </div>
         </div>
       </div>
