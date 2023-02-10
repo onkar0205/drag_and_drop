@@ -69,11 +69,9 @@ class FormContainer extends Component {
                         :
                         <span hidden={true}></span>
                 }
-                
                 <Preview
                     previews={ this.props.custom }
                     fields={this.state.orders} id='previewModal' />
-
                 <div className="card card-default" style={this.ifDuplicated()}>
                     <div className="card-header">
                         <span className="pull-left">Form Items</span>
@@ -164,20 +162,20 @@ class FormContainer extends Component {
                     })
                 }
             });
-            $( list ).sortable({
-                update : function(event, ui){
-                    self.setState({
-                        dragActive : false,
-                    })
-                    self.resetStateOrder();
-                },
-                out : function(event, ui){
-                    self.setState({
-                        dragActive : false,
-                    })
-                }
-            });
-            $( list ).disableSelection();
+            // $( list ).sortable({
+            //     update : function(event, ui){
+            //         self.setState({
+            //             dragActive : false,
+            //         })
+            //         self.resetStateOrder();
+            //     },
+            //     out : function(event, ui){
+            //         self.setState({
+            //             dragActive : false,
+            //         })
+            //     }
+            // });
+            // $( list ).disableSelection();
         } );
     }
 
@@ -303,15 +301,6 @@ class FormContainer extends Component {
                 // title : 'Title',
                 type : 'Text',
                 toolType : 'SINGLE_FIELD',
-                // defaultValue : '',
-                // placeholder : '',
-                // description : '',
-                // validation : {
-                //     isReadOnly: false,
-                //     isRequired: false,
-                //     min : 6,
-                //     max : 6
-                // }
             }
         }
         let fields = this.state.fields;

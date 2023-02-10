@@ -3,7 +3,7 @@ let Tools = [
     {
         title : 'Single Field',
         name : 'SINGLE_FIELD',
-        icon : 'fa fa-wpforms'
+        // icon : 'fa fa-wpforms'
     }
 ];
 class ToolBox extends Component {

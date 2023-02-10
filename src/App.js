@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ToolBox from './components/ToolBox';
 import FormContainer from './components/FormContainer';
 import './css/App.css';
+import { forEach } from 'lodash';
 
 class TestComponent extends  Component{
     constructor(props){
@@ -87,7 +88,10 @@ class App extends Component {
   }
 
   myForm(form){
-      console.log(form);
+    //   console.log(form.length);
+    form.forEach(que=>{
+        console.log(que.name)
+    })
   }
 }
 
